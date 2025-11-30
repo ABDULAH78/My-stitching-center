@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Stitching Studio</title>
+
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+body {
+  font-family: "Trebuchet MS", sans-serif;
+  margin: 0;
+  background: #faf7f2;
+  color: #443c36;
+  scroll-behavior: smooth;
+}
+header {
+  background: #c49aa6;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+nav {
+  background: #f2e6df;
+  padding: 0.75rem;
+  text-align: center;
+}
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #443c36;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+nav a:hover {
+  color: #a1606a;
+  transform: scale(1.1);
+}
+
+/* Sections */
+section {
+  padding: 2rem;
+  display: none;
+}
+section.active {
+  display: block;
+}
+
+/* Gallery */
+.gallery img {
+  width: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: transform .4s;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: scale(1.15);
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Forms */
+form input, form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+form button {
+  padding: 0.7rem 1.2rem;
+  background: #c49aa6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Fade-in */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.visible {
+  opacity: 1;
+}
+
+/* Mobile nav */
+#mobile-menu-btn {
+  background: #c49aa6;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  margin: 10px auto;
+  display: none;
+}
+nav.open {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  nav a { display: block; margin: 0.5rem 0; }
+  #mobile-menu-btn { display: block; }
+  .gallery img { width: 100%; }
+}
+
+/* ----------------- SERVICES STYLING ----------------- */
+
+.price-card {
+  background: #fff5f7;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Styled List */
+.pretty-list {
+  list-style: none;
+  padding: 0;
+}
+.pretty-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ead8dd;
+  font-size: 1.1rem;
+}
+.pretty-list li:last-child {
+  border-bottom: none;
+}
+.pretty-list span {
+  color: #6f5060;
+}
+
+/* Extra images section */
+.extra-images {
+  margin-top: 40px;
+  text-align: center;
+}
+.extra-images h3 {
+  margin-bottom: 15px;
+}
+.extra-img {
+  width: 28%;
+  margin: 1%;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.extra-img:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 600px) {
+  .extra-img {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1 class="fade-in">My Stitching Studio</h1>
+</header>
+
+<button id="mobile-menu-btn">Menu</button>
+
+<nav>
+  <a href="#" data-section="home">Home</a>
+  <a href="#" data-section="gallery">Gallery</a>
+  <a href="#" data-section="services">Services</a>
+  <a href="#" data-section="patterns">Patterns</a>
+  <a href="#" data-section="contact">Contact</a>
+</nav>
+
+<!-- ---------- HOME ---------- -->
+<section id="home" class="active fade-in">
+  <h2>Welcome</h2>
+  <p>Explore beautiful hand-stitched designs created with love.</p>
+</section>
+
+<!-- ---------- GALLERY ---------- -->
+<section id="gallery" class="fade-in">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="example1.jpg">
+    <img src="example2.jpg">
+    <img src="example3.jpg">
+  </div>
+</section>
+
+<!-- ---------- CLEANED SERVICES SECTION ---------- -->
+<section id="services" class="fade-in">
+  <h2>Services & Pricing</h2>
+
+  <div class="price-card">
+    <h3>Stitching Rates</h3>
+
+    <ul class="pretty-list">
+      <li><span>Simple Suit Stitching</span> <strong>900</strong></li>
+      <li><span>With Lace / Piping</span> <strong>1000</strong></li>
+      <li><span>According to Design</span> <strong>Varies</strong></li>
+      <li><span>Dupatta Customization</span> <strong>300</strong></li>
+      <li><span>Urgent Stitching Charges</span> <strong>300</strong></li>
+      <li><span>Urgent Limit</span> <strong>2 Days</strong></li>
+    </ul>
+  </div>
+
+  <div class="extra-images">
+    <h3>More Work Samples</h3>
+    <img src="sample1.jpg" class="extra-img">
+    <img src="sample2.jpg" class="extra-img">
+    <img src="sample3.jpg" class="extra-img">
+  </div>
+</section>
+
+<!-- ---------- PATTERNS ---------- -->
+<section id="patterns" class="fade-in">
+  <h2>Embroidery Patterns</h2>
+  <ul>
+    <li>Floral Mandala</li>
+    <li>Traditional Borders</li>
+    <li>Modern Minimalist Leaves</li>
+  </ul>
+</section>
+
+<!-- ---------- CONTACT ---------- -->
+<section id="contact" class="fade-in">
+  <h2>Contact Me</h2>
+  <form>
+    <input type="text" placeholder="Your Name" />
+    <input type="email" placeholder="Your Email" />
+    <textarea placeholder="Your Message" rows="5"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox"></div>
+
+<script>
+// ----- Section Switching -----
+const links = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("section");
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    sections.forEach(sec => sec.classList.remove("active"));
+    const id = link.getAttribute("data-section");
+    document.getElementById(id).classList.add("active");
+  });
+});
+
+// ----- Lightbox -----
+const lightbox = document.getElementById("lightbox");
+document.querySelectorAll('.gallery img').forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightbox.innerHTML = `<img src="${img.src}">`;
+  });
+});
+lightbox.addEventListener("click", () => lightbox.style.display = "none");
+
+// ----- Form Validation -----
+const form = document.querySelector("form");
+form.addEventListener("submit", e => {
+  const inputs = form.querySelectorAll("input, textarea");
+  for (let field of inputs) {
+    if (!field.value.trim()) {
+      alert("Please fill out all fields.");
+      e.preventDefault();
+      return;
+    }
+  }
+});
+
+// ----- Mobile Menu -----
+document.getElementById("mobile-menu-btn").onclick = () => {
+  document.querySelector("nav").classList.toggle("open");
+};
+
+// ----- Fade-in Animations on Scroll -----
+const faders = document.querySelectorAll(".fade-in");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+});
+faders.forEach(f => observer.observe(f));
+</script>
+
+</body>
+</html>
